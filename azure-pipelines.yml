@@ -1,7 +1,7 @@
 jobs:
   - job: BuildWindowsWithSonarCloud
     displayName: Build for Windows\MSBuild With SonarCloud
-    pool: Default
+    pool:
       vmImage: "windows-latest"
     variables:
       BUILD_WRAPPER_DOWNLOAD_URL: https://sonarcloud.io/static/cpp/build-wrapper-win-x86.zip
