@@ -1,4 +1,11 @@
 jobs:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'Swift'
+    organization: 'bpbreinerpacheco0621'
+    scannerMode: 'MSBuild'
+    projectKey: 'bpbreinerpacheco0621/Swift'
+    projectName: 'Swift'
 - job: BuildWindowsWithSonarCloud
   displayName: Build for Windows\MSBuild With SonarCloud
   pool:
