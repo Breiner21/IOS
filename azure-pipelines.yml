@@ -1,14 +1,14 @@
 jobs:
   - job: BuildWindowsWithSonarCloud
     displayName: Build for Windows\MSBuild With SonarCloud
-    pool:
-      vmImage: "windows-latest"
+    pool: Default
+
     variables:
       BUILD_WRAPPER_DOWNLOAD_URL: https://sonarcloud.io/static/cpp/build-wrapper-win-x86.zip
     steps:
       - task: SonarCloudPrepare@1  
         inputs:
-          SonarCloud: "<insert name of the SonarCloud service connection you created in step 2>"
+          SonarCloud: "Prueba1-2"
           organization: "sonarsource-cfamily-examples"
           scannerMode: "CLI"
           configMode: "file"
