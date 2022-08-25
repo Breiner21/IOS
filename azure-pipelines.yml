@@ -11,11 +11,8 @@ jobs:
           scannerMode: "CLI"
           configMode: "file"
 
-     
-      - pwsh: |
-          & "$HOME\.sonar\build-wrapper-win-x86\build-wrapper-win-x86-64.exe" --out-dir build_wrapper_output_directory<insert_your_clean_build_command>
-        workingDirectory: .
-        displayName: Build in build-wrapper
+         
+        
       - task: SonarCloudAnalyze@1
 
   
