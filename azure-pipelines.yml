@@ -1,5 +1,5 @@
 jobs:
--
+
 - job: BuildWindowsWithSonarCloud
   displayName: Build for Windows\MSBuild With SonarCloud
   pool:
