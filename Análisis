@@ -1,20 +1,33 @@
-#import<Foundation/Foundation.h>
-#import"Person.h"
+#import <Foundation/Foundation.h>
 
-@implementation Person
-+(void)eat{
-    Person *p = [Person new];
-    p->_name=@"Jack";
-    NSLog(@"%@ÖÐÎç³Ô¸Ç½½·¹¡£",p->_name);
-}
-+(Person *)person{
-    Person *p = [Person new];
-    return p;
-}
-+(Person *)personWithName:(NSString *)name andAge:(int)age{
-    Person *p = [Person new];
-    p->_name=name;
-    p->_age=age;
-    return p;
-}
-@end
+NSDictionary *headers = @{ @"Content-Type": @"application/json",
+   @"Cache-Control": @"no-cache" };
+NSDictionary *parameters = @{ @"message": @"Text of the SMS message",
+    @"tpoa": @"Sender",
+    @"recipient": @[ @{ @"msisdn": @"12015550123" }, @{ @"msisdn": @"447400123456" }, @{ @"msisdn": @"5212221234567" } ] };
+
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.labsmobile.com/json/send"]
+       cachePolicy:NSURLRequestUseProtocolCachePolicy
+   timeoutInterval:10.0];
+[request setHTTPMethod:@"POST"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self myusername], [self mypassword]];
+NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodingWithLineLength:80]];
+[request setValue:authValue forHTTPHeaderField:@"Authorization"];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        } else {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            NSLog(@"%@", httpResponse);
+        }
+    }];
+[dataTask resume];
