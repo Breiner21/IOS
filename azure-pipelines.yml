@@ -9,9 +9,12 @@ jobs:
   - task: SonarCloudPrepare@1
     inputs:
       SonarCloud: 'Prueba5'
-      organization: 'bpbreinerpacheco0621_Prueba5'
+      organization: 'bpbreinerpacheco0621'
       scannerMode: 'CLI'
-      configMode: 'file'
+      configMode: 'manual'
+      cliProjectKey: 'bpbreinerpacheco0621_Prueba5'
+      cliProjectName: 'Prueba5'
+      cliSources: '.'
       extraProperties: |
         sonar.cfamily.vscoveragexml.reportsPath=$(System.DefaultWorkingDirectory)/CoverageResults/*/*.xml
   
