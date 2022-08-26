@@ -16,7 +16,7 @@ jobs:
       cliProjectName: 'Prueba5'
       cliSources: '.'
       extraProperties: |
-        sonar.cfamily.vscoveragexml.reportsPath=$(System.DefaultWorkingDirectory)/CoverageResults/*/*.xml
+        sonar.cfamily.vscoveragexml.reportsPath=C:\Users\breinerpacheco\agent\_work\_tasks\VSTest_ef087383-ee5e-42c7-9a53-ab56c98420f9/CoverageResults/*/*.xml
   
   # Execute the tests to generate the coverage statistics
   - task: VSTest@2
@@ -25,8 +25,8 @@ jobs:
       testAssemblyVer2: |
         test1\*\test1.dll
         test2\*\test2.dll
-      searchFolder: '$(System.DefaultWorkingDirectory)'
-      resultsFolder: '$(System.DefaultWorkingDirectory)/CoverageResults'
+      searchFolder: 'C:\Users\breinerpacheco\agent\_work\_tasks\VSTest_ef087383-ee5e-42c7-9a53-ab56c98420f9'
+      resultsFolder: 'C:\Users\breinerpacheco\agent\_work\_tasks\VSTest_ef087383-ee5e-42c7-9a53-ab56c98420f9/CoverageResults'
       otherConsoleOptions: '/collect:"Code Coverage;Format=Xml"' # Necessary to have an XML coverage report
       codeCoverageEnabled: true
       testRunTitle: 'Run tests'
