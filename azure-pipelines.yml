@@ -14,3 +14,4 @@ jobs:
           configMode: "file"
             
       - task: SonarCloudAnalyze@1
+      
