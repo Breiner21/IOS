@@ -1,33 +1,41 @@
-#import <Foundation/Foundation.h>
+#include <stdio.h>
 
-NSDictionary *headers = @{ @"Content-Type": @"application/json",
-   @"Cache-Control": @"no-cache" };
-NSDictionary *parameters = @{ @"message": @"Text of the SMS message",
-    @"tpoa": @"Sender",
-    @"recipient": @[ @{ @"msisdn": @"12015550123" }, @{ @"msisdn": @"447400123456" }, @{ @"msisdn": @"5212221234567" } ] };
+main()
 
-NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+{
 
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.labsmobile.com/json/send"]
-       cachePolicy:NSURLRequestUseProtocolCachePolicy
-   timeoutInterval:10.0];
-[request setHTTPMethod:@"POST"];
-[request setAllHTTPHeaderFields:headers];
-[request setHTTPBody:postData];
+int x, y, z;
 
-NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self myusername], [self mypassword]];
-NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
-NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodingWithLineLength:80]];
-[request setValue:authValue forHTTPHeaderField:@"Authorization"];
+printf(«Escribe el primer número: «);
 
-NSURLSession *session = [NSURLSession sharedSession];
-NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error) {
-            NSLog(@"%@", error);
-        } else {
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-            NSLog(@"%@", httpResponse);
-        }
-    }];
-[dataTask resume];
+scanf(«%d»,&x);
+
+printf(«Escribe el segundo número: «);
+
+scanf(«%d»,&y);
+
+printf(«Escribe el tercer número: «);
+
+scanf(«%d»,&z);
+
+if ( x > y && x < z )
+
+printf(«El número mayor es: %d»,x);
+
+else
+
+if  ( y > x && y > z )
+
+printf(«El número mayor es: %d», y);
+
+else
+
+if  ( z > x && z > y )
+
+printf(«El número mayor es: %d», z);
+
+else
+
+printf(«Los tres números son iguales»);
+
+}
