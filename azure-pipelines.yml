@@ -19,6 +19,11 @@ jobs:
         sonar.cfamily.vscoveragexml.reportsPath=C:\Users\breinerpacheco\agent\_work\_tasks\VSTest_ef087383-ee5e-42c7-9a53-ab56c98420f9/CoverageResults/*/*.xml
   
   # Execute the tests to generate the coverage statistics
+  - task: reportgenerator@5
+    inputs:
+      reports: 'coverage.xml'
+      targetdir: 'coveragereport'
+      sourcedirs: '/C:\Users\breinerpacheco\agent\_work\_tasks\SonarCloudAnalyze_ce096e50-6155-4de8-8800-4221aaeed4a1\1.32.0\sonar-scanner\conf\coverage.xml'
   - task: VSTest@2
     inputs:
       testSelector: 'testassemblies'
