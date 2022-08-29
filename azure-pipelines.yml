@@ -24,12 +24,8 @@ jobs:
       reports: 'coverage.xml'
       targetdir: 'C:\Users\breinerpacheco\agent\_work\_tasks\SonarCloudAnalyze_ce096e50-6155-4de8-8800-4221aaeed4a1\1.32.0\sonar-scanner\conf'
       reporttypes: 'HtmlInline_AzurePipelines;Cobertura;xml'
-      sourcedirs: 'C:\Users\breinerpacheco\agent\_work\_tasks\SonarCloudAnalyze_ce096e50-6155-4de8-8800-4221aaeed4a1\1.32.0\sonar-scanner\conf\Código.mm'
-  - task: reportgenerator@5
-    inputs:
-      reports: 'coverage.xml'
-      targetdir: 'coveragereport'
-      sourcedirs: '/C:\Users\breinerpacheco\agent\_work\_tasks\SonarCloudAnalyze_ce096e50-6155-4de8-8800-4221aaeed4a1\1.32.0\sonar-scanner\conf\coverage.xml'
+      sourcedirs: 'C:\Users\breinerpacheco\Desktop\ejemplo.c'
+  
   - task: VSTest@2
     inputs:
       testSelector: 'testassemblies'
