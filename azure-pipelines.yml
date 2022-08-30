@@ -19,13 +19,17 @@ jobs:
         sonar.cfamily.vscoveragexml.reportsPath=C:\Users\breinerpacheco\agent\_work\_tasks\VSTest_ef087383-ee5e-42c7-9a53-ab56c98420f9/CoverageResults/*/*.xml
   
   # Execute the tests to generate the coverage statistics
-  
-  - task: VSTest@2
-    inputs:
-      testSelector: 'testassemblies'
+         
+       - task: VSTest@2
+    displayName: 'VsTest - testAssemblies'
+       inputs:
       testAssemblyVer2: |
-       test1\*\test1.dll
-        test2\*\test2.dll
+     **\$(BuildConfiguration)\*test*.dll
+     !**\obj\**
+    platform: '$(BuildPlatform)'
+     configuration: '$(BuildConfiguration)'
+     diagnosticsEnabled: True
+     enabled: true
       
       searchFolder: 'C:\Users\breinerpacheco\agent\_work\_tasks\VSTest_ef087383-ee5e-42c7-9a53-ab56c98420f9'
       resultsFolder: 'C:\Users\breinerpacheco\agent\_work\_tasks\VSTest_ef087383-ee5e-42c7-9a53-ab56c98420f9/CoverageResults'
